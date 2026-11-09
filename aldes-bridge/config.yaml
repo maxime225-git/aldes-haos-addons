@@ -1,7 +1,7 @@
 ---
-name: Aldes Bridge
+name: Aldes Bridge-2
 version: "0.21.0"
-slug: aldes-bridge
+slug: aldes-bridge-2
 description: Bridge MQTT/TLS pour Aldes T.ONE AquaAir — auto-discovery Home Assistant
 url: https://github.com/saniho/aldes-bridge
 maintainer: saniho
@@ -14,7 +14,7 @@ hassio_role: "manager"
 ingress: true
 ingress_port: 8080
 panel_icon: mdi:heat-pump
-panel_title: Aldes Bridge
+panel_title: Aldes Bridge-2
 privileged:
   - NET_ADMIN
 ports:
