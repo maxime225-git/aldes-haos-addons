@@ -36,7 +36,7 @@ RUN mkdir -p /config/aldes
 COPY run.sh /run.sh
 RUN chmod +x /run.sh
 
-EXPOSE 18883 8080
+EXPOSE 18883 8081
 
 ENV ALDES_CONFIG_FILE=/config/aldes/config.json
 ENV ALDES_TELEMETRY_FILE=/config/aldes/telemetry.json
