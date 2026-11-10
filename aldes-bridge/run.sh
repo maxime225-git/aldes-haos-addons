@@ -21,7 +21,7 @@ if [ -d "$OLD_DIR" ] && [ ! -f "$MIGRATE_FLAG" ]; then
 fi
 
 MQTT_PORT=18883
-WEB_PORT=8080
+WEB_PORT=8081
 BOX_IP=""
 MODE=""
 HA_MQTT=""
