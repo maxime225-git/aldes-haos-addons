@@ -65,7 +65,7 @@ if [ "$MQTT_PORT" != "8883" ]; then
   # Supprimer TOUTES les anciennes regles REDIRECT 8883->* (accumulees a chaque restart)
   for chain in PREROUTING OUTPUT; do
     i=0; while [ $i -lt 20 ] && iptables -t nat -D "$chain" -p tcp --dport 8883 -j REDIRECT --to-port 18883 2>/dev/null; do i=$((i+1)); done
-    i=0; while [ $i -lt 20 ] && iptables -t nat -D "$chain" -p tcp --dport 8883 -j REDIRECT --to-port 8080 2>/dev/null; do i=$((i+1)); done
+    i=0; while [ $i -lt 20 ] && iptables -t nat -D "$chain" -p tcp --dport 8883 -j REDIRECT --to-port 8081 2>/dev/null; do i=$((i+1)); done
     i=0; while [ $i -lt 20 ] && iptables -t nat -D "$chain" -p tcp -s "$BOX_IP" --dport 8883 -j REDIRECT --to-port 18883 2>/dev/null; do i=$((i+1)); done
   done
   echo "[run.sh] iptables: all old 8883 REDIRECT rules cleaned"
