@@ -12,7 +12,7 @@ init: false
 host_network: true
 hassio_role: "manager"
 ingress: true
-ingress_port: 8080
+ingress_port: 8081
 panel_icon: mdi:heat-pump
 panel_title: Aldes Bridge-2
 privileged:
