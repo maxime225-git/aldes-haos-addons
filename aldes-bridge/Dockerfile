@@ -28,6 +28,8 @@ RUN pip install --no-cache-dir -r requirements.txt \
     && rm -rf /var/lib/apt/lists/*
 
 COPY --from=web /src/server/ ./server/
+COPY patch_ha_instance.py /tmp/patch_ha_instance.py
+RUN python /tmp/patch_ha_instance.py && rm /tmp/patch_ha_instance.py
 COPY --from=web /src/profiles/ ./profiles/
 COPY --from=web /src/web/dist ./dist
 

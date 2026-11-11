@@ -41,6 +41,14 @@ if [ -f /data/options.json ]; then
   ha_port=$(python3 -c "import json,sys; d=json.load(open('/data/options.json')); print(d.get('ha_mqtt_port',''))" 2>/dev/null)
 fi
 
+# Les options HAOS ne deviennent pas automatiquement des variables d'environnement.
+export ALDES_INSTANCE_ID="$(python3 -c 'import json; from pathlib import Path; p=Path("/data/options.json"); d=json.loads(p.read_text()) if p.exists() else {}; print(d.get("ha_instance_id", "pac2"))')" || exit 1
+if [[ ! "$ALDES_INSTANCE_ID" =~ ^[a-z0-9][a-z0-9_-]{0,31}$ ]]; then
+  echo "[run.sh] ERROR: ha_instance_id invalide (1-32 caracteres a-z, 0-9, _ ou -)" >&2
+  exit 1
+fi
+echo "[run.sh] HA instance: $ALDES_INSTANCE_ID"
+
 echo "[run.sh] MQTT_PORT=$MQTT_PORT, WEB_PORT=$WEB_PORT, BOX_IP=$BOX_IP, HA_MQTT=$HA_MQTT"
 
 # Diagnostique reseau
